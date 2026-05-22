@@ -48,7 +48,10 @@ mkdir -p cutadapt_trimmed_fastqs
 cutadapt \
 --cores 8 \
 -g AGATCGGAAGAGCACACGTCTGAACTCCAGTCA \
+-a AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT \
 -a GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG \
+--revcomp \
+-n 3 \
 --poly-a \
 --info-file cutadapt_trimmed_fastqs/${fwd_reads##*/}_info.tsv \
 -o cutadapt_trimmed_fastqs/${fwd_reads##*/} \
