@@ -15,14 +15,15 @@
 # setup env
 source $HOME/.bash_profile
 conda activate biotradis
-run=5
+run=7
 mkdir /gpfs01/home/mbzlld/data/tradis/biotradis$run
 cd /gpfs01/home/mbzlld/data/tradis/biotradis$run
 
 
 # make the files.txt file
 # for now just work on the first file for testing
-echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz" > files.txt
+#echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz" > files.txt
+ls /gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/*.fq.gz > files.txt
 
 # ok great, think the input files are as good as they can be. Now to finetune the tradis parameters
 # try with more relaxed parameters
@@ -34,7 +35,7 @@ bacteria_tradis \
 --smalt_s 1 \
 --smalt_y .90 \
 -m 0 \
--mm 6 \
+-mm 15 \
 -f files.txt \
 -t CGAGCTCGAATTCATCGATGATGGTTGAGATGTGTATAAGAGACAG \
 -r /gpfs01/home/mbzlld/data/tradis/reference/GCF_000750555.1_ASM75055v1_genomic.fna
@@ -50,6 +51,22 @@ conda deactivate
 #-m 0 \
 #-mm 3 \
 
+# run 5:
+#--smalt_r 0 \
+#--smalt_k 10 \
+#--smalt_s 1 \
+#--smalt_y .90 \
+#-m 0 \
+#-mm 6 \
 
+# run 6:
+#--smalt_r 0 \
+#--smalt_k 10 \
+#--smalt_s 1 \
+#--smalt_y .90 \
+#-m 0 \
+#-mm 15 \
+
+# run 7 same as run 6 but with all input files
 
 
