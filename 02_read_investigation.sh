@@ -30,3 +30,11 @@ seqkit fq2fa > /gpfs01/home/mbzlld/data/tradis/investigating/BWtacXpress1_EKDL26
 conda deactivate
 
 
+# extract reads from the trimmed fastq to look at
+conda activate seqkit
+seqkit head -n 100 /gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz |
+seqkit fq2fa > /gpfs01/home/mbzlld/data/tradis/investigating/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1_first100_trimmed.fasta
+conda deactivate
+
+
+
