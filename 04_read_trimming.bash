@@ -35,19 +35,19 @@ mkdir -p trimmed_fastqs/2_cutadapt/reports
 mkdir -p trimmed_fastqs/3_cutadapt
 mkdir -p trimmed_fastqs/3_cutadapt/reports
 
-##  # run fastp on the reads for this sample
-##  fastp \
-##  -i $fwd_reads \
-##  -o trimmed_fastqs/1_fastp/${fwd_reads##*/} \
-##  --disable_quality_filtering \
-##  --disable_adapter_trimming \
-##  --disable_length_filtering \
-##  --trim_poly_g \
-##  --poly_g_min_len 5 \
-##  --trim_poly_x \
-##  --poly_x_min_len 4 \
-##  --thread 8 \
-##  --html trimmed_fastqs/1_fastp/reports/${fwd_reads##*/}_fastp.html
+# run fastp on the reads for this sample
+fastp \
+-i $fwd_reads \
+-o trimmed_fastqs/1_fastp/${fwd_reads##*/} \
+--disable_quality_filtering \
+--disable_adapter_trimming \
+--disable_length_filtering \
+--trim_poly_g \
+--poly_g_min_len 5 \
+--trim_poly_x \
+--poly_x_min_len 4 \
+--thread 8 \
+--html trimmed_fastqs/1_fastp/reports/${fwd_reads##*/}_fastp.html
 
 # run cutadapt on the fastp trimmed reads 
 cutadapt \
