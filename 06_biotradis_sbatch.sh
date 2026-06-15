@@ -15,8 +15,8 @@
 # setup env
 source $HOME/.bash_profile
 conda activate biotradis
-run=8
-mkdir /gpfs01/home/mbzlld/data/tradis/biotradis$run
+run=10
+mkdir -p /gpfs01/home/mbzlld/data/tradis/biotradis$run
 cd /gpfs01/home/mbzlld/data/tradis/biotradis$run
 
 
@@ -24,7 +24,9 @@ cd /gpfs01/home/mbzlld/data/tradis/biotradis$run
 # for now just work on the first file for testing
 #echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz" > files.txt
 #ls /gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/2_cutadapt/*.fq.gz > files.txt
-echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/3_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz" > files.txt
+#echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/3_cutadapt/BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz" > files.txt
+#ls /gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/3_cutadapt/*.fq.gz > files.txt
+echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/3_cutadapt/BWtacXpress_merge123_1.fq.gz" > files.txt
 
 # ok great, think the input files are as good as they can be. Now to finetune the tradis parameters
 # try with more relaxed parameters
@@ -71,4 +73,8 @@ conda deactivate
 # run 7 same as run 6 but with all input files
 
 # run 8 same parameters as 7 and 6 but with the input files with reads <50bp removed
+
+# run 9 same params as 6,7 & 8 with each of the 3 input files that are repeats of the same
+
+# run 10 same again but running on the merged 3 files
 
