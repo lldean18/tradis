@@ -10,19 +10,19 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=1
 #SBATCH --mem=10g
-#SBATCH --time=20:00:00
+#SBATCH --time=40:00:00
 #SBATCH --output=slurm-%x-%j.out
 
 
 
 # setup env
 source $HOME/.bash_profile
-cd /gpfs01/home/mbzlld/data/tradis/biotradis8
+cd /gpfs01/home/mbzlld/data/tradis/biotradis10
 
 
 # extract unmapped reads as fasta
 conda activate samtools1.22
-samtools fastq -f 4 BWtacXpress1_EKDL260002324-1A_23GK55LT4_L5_1.fq.gz.mapped.bam > unmapped.fastq
+samtools fastq -f 4 BWtacXpress_merge123_1.fq.gz.mapped.bam > unmapped.fastq
 conda deactivate
 conda activate seqkit
 seqkit fq2fa unmapped.fastq > unmapped.fasta
