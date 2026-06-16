@@ -36,12 +36,11 @@ seqkit seq -m 30 unmapped.fasta > unmapped_30bp_plus.fasta
 conda deactivate
 
 
-# blast those reads
+# blast those reads (against my locally downloaded copy of the database)
 conda activate blast
 blastn \
   -query unmapped_30bp_plus.fasta \
-  -db nt \
-  -remote \
+  -db /gpfs01/home/mbzlld/data/databases/nt \
   -max_target_seqs 1 \
   -max_hsps 1 \
   -outfmt "6 qseqid sseqid stitle pident length evalue bitscore" \
@@ -49,4 +48,15 @@ blastn \
 conda deactivate
 
 
+##  # blast those reads (against the server database)
+##  conda activate blast
+##  blastn \
+##    -query unmapped_30bp_plus.fasta \
+##    -db nt \
+##    -remote \
+##    -max_target_seqs 1 \
+##    -max_hsps 1 \
+##    -outfmt "6 qseqid sseqid stitle pident length evalue bitscore" \
+##    -out top_hits.tsv
+##  conda deactivate
 
