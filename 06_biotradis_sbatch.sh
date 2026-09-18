@@ -15,7 +15,7 @@
 # setup env
 source $HOME/.bash_profile
 conda activate biotradis
-run=10
+run=11
 mkdir -p /gpfs01/home/mbzlld/data/tradis/biotradis$run
 cd /gpfs01/home/mbzlld/data/tradis/biotradis$run
 
@@ -30,6 +30,10 @@ echo "/gpfs01/home/mbzlld/data/tradis/trimmed_fastqs/3_cutadapt/BWtacXpress_merg
 
 # ok great, think the input files are as good as they can be. Now to finetune the tradis parameters
 # try with more relaxed parameters
+# -mm specifies the number of mismatches allowed when matching the transposon tag. DEFAULT = 0. Higher than 2 is not recommended for transposon tags 10-12 bp in length but ours is 46bp long
+# -m is the minimum mapping quality score to use a read in downstream analysis. Default 30. needs to be 0 to include multimapping reads
+# smalt_y = minimum percentage of identical bases between read and reference DEFAULT .96
+# smalt_r = what to do with multimapping reads. 0 = randomly assign a position -1 = leave unmapped. DEFAULT = -1 
 bacteria_tradis \
 -v \
 --smalt \
@@ -38,7 +42,7 @@ bacteria_tradis \
 --smalt_s 1 \
 --smalt_y .90 \
 -m 0 \
--mm 15 \
+-mm 6 \
 -f files.txt \
 -t CGAGCTCGAATTCATCGATGATGGTTGAGATGTGTATAAGAGACAG \
 -r /gpfs01/home/mbzlld/data/tradis/reference/GCF_000750555.1_ASM75055v1_genomic.fna
@@ -78,3 +82,4 @@ conda deactivate
 
 # run 10 same again but running on the merged 3 files
 
+# run 11 repeat of the parameters of run 5 but with the merged fastq file
